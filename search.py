@@ -29,6 +29,7 @@ for i in range(24):
         cend = end + book["Chapter"+str(i)]["Index"]
     book["Chapter" + str(i+1)] = {"Index": cend, "Hits":0}
 
+####Defining Search Function####
 def search(query):
     searchable = {}
     for word in query:
@@ -48,8 +49,14 @@ def search(query):
                     book[chapter]["Hits"] += 1
                     break
     bookSort = sorted(book,key=lambda x: (book[x]["Hits"]), reverse=True)
-    print(bookSort[0] + " had the most hits with " + str(book[bookSort[0]]["Hits"]) + ". Maybe start looking there?")
+    topChapter = bookSort[0]
+    mostHits = book[topChapter]["Hits"]
+    if mostHits == 0:
+        print("Hmm..didn't seem to find that anywhere..")
+    else:
+        print(topChapter + " had the most hits with " + str(mostHits) + ". Maybe start looking there?")
 
+####Interactive Chat####
 query = input("What words are you looking for?\n").split(" ")
 search(query)
 cont = True
@@ -61,5 +68,3 @@ while cont:
         book[chapter]["Hits"] = 0
     query = input("What words?\n").split(" ")
     search(query)
-
-#read question, pull keywords, find those keywords in textbook, pull part of textbook that has the most keywords
