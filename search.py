@@ -6,7 +6,7 @@ from nltk.corpus import stopwords
 
 ####Initialization####
 stopwords = list(stopwords.words("english"))
-raw = open("C:/Users/micha/Documents/Python/AI/NLP/Six-Sigma-Green-Belt-Book-Searcher/LSSGBCTM.txt", 'rb').read()
+raw = open("PDF FILE LOCATION", 'rb').read()
 book = {}
 raw = raw.decode("utf-8")
 raw = raw.replace("\\n","")
